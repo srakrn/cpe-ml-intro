@@ -2,6 +2,12 @@
 
 \documentclass[]{beamer}
 
+\usepackage{xltxtra} 
+\usetheme{focus}
+\XeTeXlinebreaklocale "th_TH"
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+% \setmonofont{Tlwg Typist}
 \usepackage{listings}
 \usepackage{color}
 
@@ -148,12 +154,6 @@ Determined by \\
 \section{Model}
 
 \begin{frame}
-\begin{center}
-\Huge Model
-\end{center}
-\end{frame}
-
-\begin{frame}
 \frametitle{Model}
 \begin{itemize}
 \item<2-> A result of the combination between...
@@ -239,8 +239,7 @@ Blue, red, or green line?
 
 \begin{frame}
 \begin{center}
-{\LARGE Good model}\\
-{\onslide<2-> \Huge{must generalise}}
+{\LARGE Good model must \textbf{generalise}}\\
 \end{center}
 \end{frame}
 
