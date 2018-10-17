@@ -1,12 +1,13 @@
 % !TEX program = xelatex
 
-\documentclass[]{beamer}
+\documentclass[aspectratio=169]{beamer}
 
 \usepackage{xltxtra} 
 \usetheme{focus}
 \XeTeXlinebreaklocale "th_TH"
 \usepackage{fontspec}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+% \setsansfont{Gillius ADF No2}
 % \setmonofont{Tlwg Typist}
 \usepackage{listings}
 \usepackage{color}
@@ -38,15 +39,27 @@
 
 \usepackage{smartdiagram}
 
-\title{Intro to Machine Learning}
+\title{First Step to Practical Machine Learning}
 \subtitle{Knowledge Sharing for CPE/SKE students}
 \author{Sirakorn Lamyai}
 \institute{Student, Kasetsart U.}
-\date{\today}
+\date{October 30, 2018}
 \begin{document}
 
 \begin{frame}
 	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Before we start...}
+	Make sure these are installed on your computer.\\
+	{\tiny This page is a guide for installing on Windows}
+	
+	\begin{itemize}
+		\item Python 3.6: Download and install at \url{https://www.python.org}
+		\item NumPy, Scipy, Matplotlib, Scikit-learn, MLxtend:\\
+		Run \texttt{pip install numpy scipy matplotlib sklearn mlxtend}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -176,27 +189,22 @@
 			      \item<4-> \textbf{sample datas} for such the method
 		      \end{itemize}
 	\end{itemize}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Model}
 	\begin{columns}
-		\column<2->{0.5\textwidth}
+		\column<5->{0.5\textwidth}
 		\begin{figure}
 			\includegraphics[scale=.3]{imgs/simple_knn.png}
 		\end{figure}
-		\column<3->{0.5\textwidth}
+		\column<6->{0.5\textwidth}
 		Determine which group should the purple dot be in (red/green/blue) by \textbf{checking the colour of its nearest dot.}
 	\end{columns}
 	\begin{columns}
 		\column{0.5\textwidth}
 		\begin{center}
-			\Large Data
+			\onslide<5-> \Large Data
 		\end{center}
 		\column{0.5\textwidth}
 		\begin{center}
-			\Large Method
+			\onslide<6-> \Large Method
 		\end{center}
 	\end{columns}
 \end{frame}
@@ -204,7 +212,7 @@
 \begin{frame}
     \frametitle{Beginning with our first model}
     \begin{itemize}
-        \item<2-> We're going to write our \textbf{first own} machine learning algorithm called \textbf{$k$-Nearest Neighbour} ($k$NN)
+        \item<2-> We're going to write our \textbf{first own} machine learning algorithm called \textbf{$k$-Nearest Neighbour} ($k$-NN)
         \begin{itemize}
             \item<3-> $k$-NN is known to be very simple, with its concept as
         \end{itemize}
@@ -215,58 +223,84 @@
     \end{block}
 \end{frame}
 
-\subsection{A good model}
 \begin{frame}
-	\begin{center}
-		{\Huge Good model?}\\
-	\end{center}
+	\Huge{Coding time!}
+\end{frame}
+
+\section{Machine Learning Process}
+
+\begin{frame}
+	\frametitle{Machine Learning Process}
+	\begin{itemize}
+		\item Train
+		\item Test
+	\end{itemize}
+	(There'll be more of this, trust me.)
 \end{frame}
 
 \begin{frame}
-	\frametitle{Good model}
-	\begin{figure}
-		\includegraphics[scale=.4]{imgs/linreg_1.png}
-	\end{figure}
-	\begin{center}
-		How should we \textit{draw} the line to predict this data?
-	\end{center}
+	\frametitle{Choosing the parameter for $k$-NN algorithm}
+	What is the bad way to choose $k$?
+	\begin{itemize}
+		\item What if we choose $k$ = \# of all points?
+		\begin{itemize}
+			\item What will happen if our dataset's got 3 labels of A, B, C with 10, 20, and 30 data points of each?
+			\item Answer: Our model will always answer the labels with the highest data point count.
+		\end{itemize}
+		\item What if we choose $k$ = 1?
+		\begin{itemize}
+			\item Let's try!
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Good model}
-	\begin{figure}
-		\includegraphics[scale=.4]{imgs/linreg_2.png}
-	\end{figure}
-	\begin{center}
-		Blue, red, or green line?
-	\end{center}
+	\Huge{Coding time!}
 \end{frame}
 
-\subsubsection{Overfitting and underfitting}
+\begin{frame}
+	\frametitle{Training and Testing set}
+	\begin{itemize}
+		\item<2-> We separate our dataset into 2 parts: the \textbf{training set} and \textbf{testing set}
+		\begin{itemize}
+			\item<3-> Most of the time, the testing set will be around 10-25\% of the entire dataset
+			\item<4-> What will happen if we train on the testing set?
+			\item<5-> What will happen if we test on the training set?
+			\begin{itemize}
+				\item<6-> \textbf{Cheating!} Like letting the model \textit{remembers} the answer instead of \textbf{generalising} the data pattern.
+			\end{itemize}
+			\item<7-> In other words, \textbf{don't test and train model on the same set of data.}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Choosing the best $k$}
+	\begin{itemize}
+		\item \textbf{Train} with the training set, to let our model know how will the data looks like.
+		\item \textbf{Test} with the testing set, to see on how our model performs.
+	\end{itemize}
+	\small{\textit{Warning! This is a simplified Machine Learning model training process, there are more to concerns!}}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Overfitting and underfitting}
-	\begin{columns}
-		\column{0.5\textwidth}
-		\begin{figure}
-			\includegraphics[scale=.3]{imgs/linreg_2.png}
-		\end{figure}
-		\column{0.5\textwidth}
-		\begin{enumerate}
-			\item<2-> Underfitting
-			      \begin{itemize}
-				      \item<3-> Our model \textbf{fails to know the data's trends}
-				      \item<4-> Resulting in failure to predict further data
-			      \end{itemize}
-			\item<5-> Overfitting
-			      \begin{itemize}
-				      \item<6-> Our model \textbf{memorise instead of generalise}
-				      \item<7-> Resulting in failure to catch the trend
-			      \end{itemize}
-		\end{enumerate}
+	Which decision region is good?\\~\\
+	\begin{columns}[t]
+		\column{0.33\textwidth}
+			\includegraphics[width=1.0\textwidth]{imgs/underfit.pdf}
+			\textbf{Underfit: } The model fails to recognise data pattern
+		\column{0.33\textwidth}
+			\includegraphics[width=1.0\textwidth]{imgs/good.pdf}
+			\textbf{Good fit: } The model recognises data pattern \textbf{generally}
+		\column{0.33\textwidth}
+			\includegraphics[width=1.0\textwidth]{imgs/overfit.pdf}
+			\textbf{Overfit:} The model \textbf{remembers} data pattern instead of generalising.
 	\end{columns}
 \end{frame}
 
 \begin{frame}
+	\frametitle{Overfitting and underfitting}
 	\begin{center}
 		{\LARGE Good model must \textbf{generalise}}\\
 	\end{center}
