@@ -27,6 +27,7 @@
 \lstset{style=codeblock}
 
 \usepackage{smartdiagram}
+\usepackage{graphicx}
 
 \title{First Step to Practical Machine Learning}
 \subtitle{Knowledge Sharing for CPE/SKE students}
@@ -497,4 +498,39 @@ elif led_on == (a, b, g, e, d):
 	\end{itemize}
 \end{frame}
 
+\section{Neural Networks}
+
+\begin{frame}
+	\frametitle{Artificial Neural Networks (ANN)}
+	\begin{columns}
+		\column{0.35\textwidth}
+		\begin{figure}
+			\includegraphics[width=1.0\textwidth]{imgs/ann.png}
+		\end{figure}
+		\column{0.65\textwidth}
+			This seems complex, right? We'll get started a little by little...
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Perceptron}
+	\includegraphics[width=1.0\textwidth]{imgs/perceptron.pdf}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Linearly Separable Problem}
+	\begin{columns}
+		\column{0.4\textwidth}
+		\begin{figure}
+			\includegraphics[width=0.7\linewidth,height=0.7\textheight,keepaspectratio]{imgs/linsep.png}
+			\caption{Linearly Separable Problem (Courtesy: Elizabeth Goodspeed from Wikimedia Commons)}
+		\end{figure}
+		\column{0.6\textwidth}
+			\begin{itemize}
+				\item Now our problem is that the perceptron is a \textbf{linear classifier}, that means it could only separate datas that is linearly separable.
+				\item Real-world problems are not that easy to separate
+				\item How can we solve this problem?
+			\end{itemize}
+	\end{columns}
+\end{frame}
 \end{document}
