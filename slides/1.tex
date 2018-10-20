@@ -11,30 +11,19 @@
 % \setmonofont{Tlwg Typist}
 \usepackage{listings}
 \usepackage{color}
-
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\usepackage{amsmath}
 
 \lstdefinestyle{codeblock}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
     captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
+    keepspaces=true,              
     showspaces=false,                
-    showstringspaces=false,
+    showstringspaces=true,
     showtabs=false,                  
     tabsize=4
 }
+
 \lstset{style=codeblock}
 
 \usepackage{smartdiagram}
@@ -54,11 +43,11 @@
 	\frametitle{Before we start...}
 	Make sure these are installed on your computer.\\
 	{\tiny This page is a guide for installing on Windows}
-	
+
 	\begin{itemize}
 		\item Python 3.6: Download and install at \url{https://www.python.org}
 		\item NumPy, Scipy, Matplotlib, Scikit-learn, MLxtend:\\
-		Run \texttt{pip install numpy scipy matplotlib sklearn mlxtend}
+		      Run \texttt{pip install numpy scipy matplotlib sklearn mlxtend}
 	\end{itemize}
 \end{frame}
 
@@ -136,19 +125,19 @@
 	\frametitle{Supervised learning}
 	\begin{columns}
 		\column{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=1.0\textwidth]{imgs/supervised_learning.png}
-			\end{figure}
+		\begin{figure}
+			\includegraphics[width=1.0\textwidth]{imgs/supervised_learning.png}
+		\end{figure}
 		\column{0.5\textwidth}
-			\begin{itemize}
-				\item<2-> Given a \textbf{training set} for the data, find a \textbf{model} to \textbf{generalise} well to \textbf{unseen} data.
-				\item<3-> Two main supervised learning problems
-				\begin{itemize}
-					\item<4-> Classification: On the discrete data
-					\item<5-> Regression: On the continuous data
-				\end{itemize}
-				\item<6-> Example problems: Spam E-mail detection, Facial recognition
-			\end{itemize}
+		\begin{itemize}
+			\item<2-> Given a \textbf{training set} for the data, find a \textbf{model} to \textbf{generalise} well to \textbf{unseen} data.
+			\item<3-> Two main supervised learning problems
+			      \begin{itemize}
+				      \item<4-> Classification: On the discrete data
+				      \item<5-> Regression: On the continuous data
+			      \end{itemize}
+			\item<6-> Example problems: Spam E-mail detection, Facial recognition
+		\end{itemize}
 	\end{columns}
 \end{frame}
 
@@ -158,14 +147,14 @@
 	\frametitle{Unsupervised learning}
 	\begin{columns}
 		\column{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[width=1.0\textwidth]{imgs/kmeans.png}
-			\end{figure}
+		\begin{figure}
+			\includegraphics[width=1.0\textwidth]{imgs/kmeans.png}
+		\end{figure}
 		\column{0.5\textwidth}
-			\begin{itemize}
-				\item<2-> Discover \textbf{hidden} structure in \textbf{non-labelled} data.
-				\item<3-> Example: Clustering, Generative models
-			\end{itemize}
+		\begin{itemize}
+			\item<2-> Discover \textbf{hidden} structure in \textbf{non-labelled} data.
+			\item<3-> Example: Clustering, Generative models
+		\end{itemize}
 	\end{columns}
 \end{frame}
 
@@ -210,17 +199,17 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Beginning with our first model}
-    \begin{itemize}
-        \item<2-> We're going to write our \textbf{first own} machine learning algorithm called \textbf{$k$-Nearest Neighbour} ($k$-NN)
-        \begin{itemize}
-            \item<3-> $k$-NN is known to be very simple, with its concept as
-        \end{itemize}
-    \end{itemize}
-    \onslide<4->
-    \begin{block}{$k$-NN algorithm}
-        To classify label of a data point, get $k$ nearest data points to the data point, and select the major label among those data points.
-    \end{block}
+	\frametitle{Beginning with our first model}
+	\begin{itemize}
+		\item<2-> We're going to write our \textbf{first own} machine learning algorithm called \textbf{$k$-Nearest Neighbour} ($k$-NN)
+		      \begin{itemize}
+			      \item<3-> $k$-NN is known to be very simple, with its concept as
+		      \end{itemize}
+	\end{itemize}
+	\onslide<4->
+	\begin{block}{$k$-NN algorithm}
+		To classify label of a data point, get $k$ nearest data points to the data point, and select the major label among those data points.
+	\end{block}
 \end{frame}
 
 \begin{frame}
@@ -232,25 +221,25 @@
 \begin{frame}
 	\frametitle{Machine Learning Process}
 	\begin{itemize}
-		\item Train
-		\item Test
+		\item<2-> Train
+		\item<3-> Test
 	\end{itemize}
-	(There'll be more of this, trust me.)
+	\onslide<4-> (There'll be more of this, trust me.)
 \end{frame}
 
 \begin{frame}
 	\frametitle{Choosing the parameter for $k$-NN algorithm}
-	What is the bad way to choose $k$?
+	\onslide<2-> What is the bad way to choose $k$?
 	\begin{itemize}
-		\item What if we choose $k$ = \# of all points?
-		\begin{itemize}
-			\item What will happen if our dataset's got 3 labels of A, B, C with 10, 20, and 30 data points of each?
-			\item Answer: Our model will always answer the labels with the highest data point count.
-		\end{itemize}
-		\item What if we choose $k$ = 1?
-		\begin{itemize}
-			\item Let's try!
-		\end{itemize}
+		\item<3-> What if we choose $k$ = \# of all points?
+		      \begin{itemize}
+			      \item<4-> What will happen if our dataset's got 3 labels of A, B, C with 10, 20, and 30 data points of each?
+			      \item<5-> Answer: Our model will always answer the labels with the highest data point count.
+		      \end{itemize}
+		\item<6-> What if we choose $k$ = 1?
+		      \begin{itemize}
+			      \item<7-> Let's try!
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -262,25 +251,25 @@
 	\frametitle{Training and Testing set}
 	\begin{itemize}
 		\item<2-> We separate our dataset into 2 parts: the \textbf{training set} and \textbf{testing set}
-		\begin{itemize}
-			\item<3-> Most of the time, the testing set will be around 10-25\% of the entire dataset
-			\item<4-> What will happen if we train on the testing set?
-			\item<5-> What will happen if we test on the training set?
-			\begin{itemize}
-				\item<6-> \textbf{Cheating!} Like letting the model \textit{remembers} the answer instead of \textbf{generalising} the data pattern.
-			\end{itemize}
-			\item<7-> In other words, \textbf{don't test and train model on the same set of data.}
-		\end{itemize}
+		      \begin{itemize}
+			      \item<3-> Most of the time, the testing set will be around 10-25\% of the entire dataset
+			      \item<4-> What will happen if we train on the testing set?
+			      \item<5-> What will happen if we test on the training set?
+			            \begin{itemize}
+				            \item<6-> \textbf{Cheating!} Like letting the model \textit{remembers} the answer instead of \textbf{generalising} the data pattern.
+			            \end{itemize}
+			      \item<7-> In other words, \textbf{don't test and train model on the same set of data.}
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Choosing the best $k$}
 	\begin{itemize}
-		\item \textbf{Train} with the training set, to let our model know how will the data looks like.
-		\item \textbf{Test} with the testing set, to see on how our model performs.
+		\item<2-> \textbf{Train} with the training set, to let our model know how will the data looks like.
+		\item<3-> \textbf{Test} with the testing set, to see on how our model performs.
 	\end{itemize}
-	\small{\textit{Warning! This is a simplified Machine Learning model training process, there are more to concerns!}}
+	\onslide<4->\tiny{\textit{Warning! This is a simplified Machine Learning model training process, there are more to concerns!}}
 \end{frame}
 
 \begin{frame}
@@ -288,14 +277,14 @@
 	Which decision region is good?\\~\\
 	\begin{columns}[t]
 		\column{0.33\textwidth}
-			\includegraphics[width=1.0\textwidth]{imgs/underfit.pdf}
-			\textbf{Underfit: } The model fails to recognise data pattern
+		\onslide<1-> \includegraphics[width=1.0\textwidth]{imgs/underfit.pdf}
+		\onslide<2-> \textbf{Underfit: } The model fails to recognise data pattern
 		\column{0.33\textwidth}
-			\includegraphics[width=1.0\textwidth]{imgs/good.pdf}
-			\textbf{Good fit: } The model recognises data pattern \textbf{generally}
+		\onslide<1-> \includegraphics[width=1.0\textwidth]{imgs/good.pdf}
+		\onslide<4-> \textbf{Good fit: } The model recognises data pattern \textbf{generally}
 		\column{0.33\textwidth}
-			\includegraphics[width=1.0\textwidth]{imgs/overfit.pdf}
-			\textbf{Overfit:} The model \textbf{remembers} data pattern instead of generalising.
+		\onslide<1-> \includegraphics[width=1.0\textwidth]{imgs/overfit.pdf}
+		\onslide<3-> \textbf{Overfit:} The model \textbf{remembers} data pattern instead of generalising.
 	\end{columns}
 \end{frame}
 
@@ -304,6 +293,208 @@
 	\begin{center}
 		{\LARGE Good model must \textbf{generalise}}\\
 	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parameter Optimisation}
+	\begin{itemize}
+		\item Actually, the key point in $k$-NN algorithm is choosing $k$ points with the least \textbf{distant}.
+		\item What is \textbf{distant}?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Norm for $k$-NN algorithm}
+	\begin{block}{Norm}
+		In linear algebra, a \textbf{norm} is a function that assigns a strictly positive length or size to each vector in a vector space - except for the zero vector, which is assigned a length of zero.
+	\end{block}
+
+	Given $\vec{x}$ as an $N$-dimension vector of $\begin{bmatrix}
+			x_1 & x_2 & \hdots & x_n
+		\end{bmatrix}$
+	\begin{itemize}
+		\item $l_1$ Norm: $\left|x\right|_1 = \sum_{i=0}^{N}\left|x_i\right|$ (Manhattan)
+		\item $l_2$ Norm: $\left|x\right|_2 = \sqrt{\sum_{i=0}^{N}x_i^2}$ (Euclidian)
+		\item $l_p$ Norm: $\left|x\right|_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}$ (Minkowski)
+	\end{itemize}
+\end{frame}
+
+\section{Algorithms for Machine Learning Classification Problem}
+
+\begin{frame}
+	\frametitle{Algorithms for Machine Learning Classification Problem}
+	$k$-NN is a very simple intuition for machine learning algorithms. However, there exists more algorithm that performs well to other problems.
+
+	Example algorithms:
+	\begin{itemize}
+		\item Na\"{i}ve Bayes
+		\item SVM
+		\item Decision Tree
+		\item Logistic Regression
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Na\"ive Bayes}
+	\begin{columns}
+		\column{0.4\textwidth}
+		\begin{center}
+			\begin{tabular}{|c | c c |}
+				\hline
+				  & Gender & Hair  \\ [0.5ex]
+				\hline\hline
+				1 & M      & Long  \\
+				\hline
+				2 & M      & Short \\
+				\hline
+				3 & F      & Long  \\
+				\hline
+				4 & F      & Long  \\
+				\hline
+				5 & F      & Short \\ [1ex]
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{block}{Bayes Theorem}
+			$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B|A) \times P(A)}{P(B)}$
+		\end{block}
+		\column{0.6\textwidth}
+		Can we \textit{guess} the gender from hair's length?
+		\begin{itemize}
+			\item $P(\textrm{Male}|\textrm{Long hair}) = \frac{1}{3}$
+			\item $P(\textrm{Female}|\textrm{Long hair}) = \frac{2}{3}$
+		\end{itemize}
+		Therefore, we guess that the long-haired person is more likely to be a female.
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Support Vector Machines (SVM)}
+	\begin{columns}
+		\column{0.3\textwidth}
+		\onslide<1-> \includegraphics[width=1.0\textwidth]{imgs/svm_2.pdf}
+		\column{0.3\textwidth}
+		\onslide<1-> \includegraphics[width=1.0\textwidth]{imgs/svm_3.pdf}
+		\onslide<1-> \includegraphics[width=1.0\textwidth]{imgs/svm_4.pdf}
+		\column{0.4\textwidth}
+		\begin{itemize}
+			\item Goal: to draw a line to separate groups of data
+			\item Ideal good line: maximising the distant between the line and classes of data points
+			\item What if the data is not linearly separable? \textbf{Kernel tricks}
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Decision Tree}
+	\begin{columns}
+		\column{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{imgs/decision_tree.pdf}
+		\column{0.6\textwidth}
+		\begin{itemize}
+			\item Creating an if-else conditions automatically
+			\item Nested conditions with a parameter to determine how does the separating of the "tree" performs.
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[scale=0.5]{imgs/xkcd_compiling.png}
+			\caption{xkcd - Compiling}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[scale=0.5]{imgs/xkcd_training.png}
+			\caption{xkcd - Compiling}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\section{Problems for Machine Learning}
+
+\subsection{Handwriting recognition}
+
+\begin{frame}
+	\frametitle{7-Segment display}
+	\begin{columns}
+		\column{0.3\textwidth}
+		\includegraphics[width=1.0\textwidth]{imgs/7seg.png}
+		\column{0.7\textwidth}
+		\begin{itemize}
+			\item<2-> This is a 7-segment display.
+			\item<3-> It consists of a bulb labelled from A-G that could form a number.
+		\end{itemize}
+		\begin{block}{Problem}<4->
+			When the list of the bulb that went on were given, can we determine the number?
+		\end{block}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{7-Segment display}
+	\begin{columns}
+		\column{0.3\textwidth}
+		\includegraphics[width=1.0\textwidth]{imgs/7seg.png}
+		\column{0.7\textwidth}
+		\begin{block}{Problem}
+			When the list of the bulb that went on were given, can we determine the number?
+		\end{block}
+		\onslide<2-> Not only yes, but \textit{easily} yes!
+		\begin{lstlisting}<2->
+if led_on == (b, c):
+    return 1
+elif led_on == (a, b, g, e, d):
+    return 2
+...
+\end{lstlisting}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Handwriting}
+	\begin{columns}
+		\column{0.3\textwidth}
+		\includegraphics[width=1.0\textwidth]{imgs/mnist_5.png}
+		\column{0.7\textwidth}
+		\begin{block}{Problem}
+			When the image of the handwriting were given, can we determine the number?
+		\end{block}
+		\onslide<2-> With an \textbf{explicit algorithm}? Obviously no! There are too many ways of drawing the number!
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{MNIST Dataset}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\includegraphics[width=1.0\textwidth]{imgs/mnist.jpeg}
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item<2-> 28*28 pixel images of handwritten numbers (0-9)
+			\item<3-> 60,000 training images
+			\item<4-> 10,000 testing images
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{$k$-NN with MNIST}
+	\begin{itemize}
+		\item Training: Pretty fast, no calculations on training phase
+		\item Testing: \textit{*thinking*}
+		\begin{itemize}
+			\item 60,000 data points to calculate the distant + 10,000 data points to test
+			\item = 600,000,000 calculations to be made\\
+			(this excludes sorting, of which is a $\mathcal{O}(n)$ process)
+			\item = \textbf{(relatively) slow}
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \end{document}
