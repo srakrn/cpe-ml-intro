@@ -53,12 +53,13 @@
 \begin{frame}
 	\frametitle{Before we start...}
 	Make sure these are installed on your computer.\\
-	{\tiny This page is a guide for installing on Windows}
 
 	\begin{itemize}
-		\item Python 3.6: Download and install at \url{https://www.python.org}
+		\item Python 3.6
 		\item NumPy, Scipy, Matplotlib, Scikit-learn, MLxtend:\\
-		      Run \texttt{pip install numpy scipy matplotlib sklearn mlxtend}
+			  Run \texttt{pip install numpy scipy matplotlib sklearn mlxtend}
+		\item MNIST loader\\
+			  \texttt{pip install git+https://github.com/datapythonista/mnist.git}
 	\end{itemize}
 \end{frame}
 
@@ -279,7 +280,7 @@
 	\begin{figure}
 		\begin{tikzpicture}
 			\draw [black] (0, 0) rectangle (7, 1) node[pos=.5] {Training data};
-			\draw [blue] (7, 0) rectangle (10, 1) node[pos=.5] {Testing data};
+			\draw [blue] (7.5, 0) rectangle (10, 1) node[pos=.5] {Testing data};
 			\draw [->, red] (2.5, 0) -- (2.5, -1) node[pos=.5] {Train};
 			\draw [black, thick] (0, -2) rectangle (5, -1) node[pos=.5] {Model};
 			\draw [->, violet] (8.5, 0) -- (8.5, -1.5) -- (5, -1.5) node[pos=0] {Evaluate error};
@@ -521,26 +522,24 @@ elif led_on == (a, b, g, e, d):
 	\begin{itemize}
 		\item Training: Pretty fast, no calculations on training phase
 		\item Testing: \textit{*thinking*}
-		      \begin{itemize}
-			      \item 60,000 data points to calculate the distant + 10,000 data points to test
-			      \item = 600,000,000 calculations to be made\\
-			            (this excludes sorting, of which is a $\mathcal{O}(n)$ process)
-			      \item = \textbf{(relatively) slow}
-		      \end{itemize}
+			\begin{itemize}
+				\item 60,000 data points to calculate the distant + 10,000 data points to test
+				\item = 600,000,000 calculations to be made\\
+					(this excludes sorting, of which is a $\mathcal{O}(n)$ process)
+				\item = \textbf{(relatively) slow}
+			\end{itemize}
+		\item Good results with $k$-NN were achieved.\\
+		($k$-NN w/ non-linear deformation (P2DHMDM), preprocessed with shiftable edges, results into 0.52\% error rate.)
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{$k$-NN with MNIST}
 	\begin{itemize}
-		\item Training: Pretty fast, no calculations on training phase
-		\item Testing: \textit{*thinking*}
-		      \begin{itemize}
-			      \item 60,000 data points to calculate the distant + 10,000 data points to test
-			      \item = 600,000,000 calculations to be made\\
-			            (this excludes sorting, of which is a $\mathcal{O}(n)$ process)
-			      \item = \textbf{(relatively) slow}
-		      \end{itemize}
+		\item Training: Slow as hell.\\
+		{\tiny Trust me, I've tried.}
+		\item Good results with SVM were achieved.\\
+		(Virtual SVM, deg-9 poly, 2-pixel jittered with deskewing preprocessing results into 0.56\% error rate.)
 	\end{itemize}
 \end{frame}
 
@@ -576,7 +575,7 @@ elif led_on == (a, b, g, e, d):
 		\item \textbf{Inputs} consisting of $n$ inputs from $x_1$, $x_2$ ... to $x_n$.
 		\item \textbf{Weights} of each inputs, namely $w_1$, $w_2$, ..., $w_n$
 		\item \textbf{Summation} of all the weighted inputs $\Sigma = w_1x_1 + w_2x_2 + \hdots + w_nx_n$
-		\item \textbf{Activation function} in either the form of $\Sigma > k$ or  $\Sigma < k$
+		\item \textbf{Activation function} in either the form of $\Sigma > k$ or  $\Sigma < k (nonlinear)$
 	\end{itemize}
 \end{frame}
 
