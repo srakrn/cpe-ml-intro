@@ -15,6 +15,7 @@
 \usepackage{smartdiagram}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{multicol}
 
 \lstdefinestyle{codeblock}{
     breakatwhitespace=false,         
@@ -65,7 +66,9 @@
 
 \begin{frame}
 	\frametitle{Outline}
-	\tableofcontents
+	\begin{multicols}{2}
+		\tableofcontents
+	\end{multicols}
 \end{frame}
 
 \section{Introduction to Machine Learning}
