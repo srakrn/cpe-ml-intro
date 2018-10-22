@@ -511,8 +511,11 @@ elif led_on == (a, b, g, e, d):
 		\column{0.5\textwidth}
 		\begin{itemize}
 			\item<2-> 28*28 pixel images of handwritten numbers (0-9)
-			\item<3-> 60,000 training images
-			\item<4-> 10,000 testing images
+			\begin{itemize}
+				\item<3-> Later to be viewed as a vector of 784 dimensions
+			\end{itemize}
+			\item<4-> 60,000 training images
+			\item<5-> 10,000 testing images
 		\end{itemize}
 	\end{columns}
 \end{frame}
@@ -550,7 +553,7 @@ elif led_on == (a, b, g, e, d):
 	\begin{columns}
 		\column{0.35\textwidth}
 		\begin{figure}
-			\includegraphics[width=0.7\linewidth,height=0.7\textheight,keepaspectratio]{imgs/ann.png}
+			\includegraphics[width=0.8\linewidth,height=0.8\textheight,keepaspectratio]{imgs/ann.png}
 			\caption{Neural network (Courtesy: Glosser.ca from Wikimedia Commons)}
 		\end{figure}
 		\column{0.65\textwidth}
@@ -559,11 +562,23 @@ elif led_on == (a, b, g, e, d):
 \end{frame}
 
 \begin{frame}
+	\frametitle{Neurons}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[width=0.8\textwidth]{imgs/neurons_pmh.png}
+			\caption{"Neurons" chandelier installed at Princh Mahidol Hall, Nakhon Pathom, Thailand (Courtesy: LASVIT's promotion video)}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Neuron}
-	\begin{figure}
-		\includegraphics[width=0.7\textwidth]{imgs/neuron.png}
-		\caption{Neuron (Courtesy: Egm4313.s12 from Wikimedia Commons)}
-	\end{figure}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[width=0.7\textwidth]{imgs/neuron.png}
+			\caption{Neuron (Courtesy: Egm4313.s12 from Wikimedia Commons)}
+		\end{figure}
+	\end{center}
 \end{frame}
 
 \begin{frame}
@@ -632,12 +647,56 @@ elif led_on == (a, b, g, e, d):
 \end{frame}
 
 \begin{frame}
-	\frametitle{Neural Networks}
+	\frametitle{Artificial Neural Networks}
 	\begin{center}
 		\begin{figure}
 			\includegraphics[width=0.7\linewidth,height=0.7\textheight,keepaspectratio]{imgs/xor_nn.png}
 			\caption{XOR gate with Perceptrons connected together (Courtesy: Parth Udawant)}
 		\end{figure}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Artificial Neural Networks}
+	How are the weights of each dendrites (inputs) are automatically adjusted?
+	\begin{itemize}
+		\item<2-> Through a \textbf{backpropagation} Process
+		\begin{itemize}
+			\item<3-> Initiate weights randomly
+			\item<4-> Calculate the error over the training set
+			\item<5-> Attempts to adjust weights little by little to minimise loss\\
+			{\onslide<6-> \tiny (Seriously, one day it will converge. There exists a mathematical proof)}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Your next step into Machine Learning}
+
+\begin{frame}
+	\frametitle{Courses in KU-CPE to be taken}
+	\begin{itemize}
+		\item Engineering Mathematics I
+		\item Discrete Mathematics and Linear Algebra
+		\item Aritificial Intelligence/Machine Learning
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{MOOCs}
+	For practical use, go ahead with...
+	\begin{itemize}
+		\item Google's Machine Learning Crash Course
+		\item Udemy's Machine Learning (UD120)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		{\Huge Thanks!}
+		\\~\\
+		\url{https://twitter.com/public_srakrn}\\
+		\url{https://www.facebook.com/srakrn}\\
+		\texttt{sirakorn.l@ku.th}
 	\end{center}
 \end{frame}
 \end{document}
