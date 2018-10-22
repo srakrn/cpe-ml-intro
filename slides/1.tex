@@ -12,6 +12,9 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{amsmath}
+\usepackage{smartdiagram}
+\usepackage{graphicx}
+\usepackage{tikz}
 
 \lstdefinestyle{codeblock}{
     breakatwhitespace=false,         
@@ -26,9 +29,6 @@
 
 \lstset{style=codeblock}
 
-\usepackage{smartdiagram}
-\usepackage{graphicx}
-
 \title{First Step to Practical Machine Learning}
 \subtitle{Knowledge Sharing for CPE/SKE students}
 \author{Sirakorn Lamyai}
@@ -38,6 +38,16 @@
 
 \begin{frame}
 	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Acknowledgements}
+	Resources on this slides are mainly adapted and rearranged from
+	\begin{itemize}
+		\item \href{https://docs.google.com/presentation/d/1oGIyzoMHT3-TTS23NPL-qzh0EAXb6kyK0S_1n5MjmgQ/edit\#slide=id.p}{W. Jitkrittum: Machine Learning Fundamentals I}
+		\item \href{http://krikamol.org/tutorial/slides/vistec-talk-16-March-2018.pdf}{K. Muandet: Machine Learning Fundamentals II}
+		\item \href{}{Google's Machine Learning Crash Course}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -81,31 +91,11 @@
 	\end{itemize}
 \end{frame}
 
-\subsubsection{Traditional programming approach}
-
 \begin{frame}
-	\frametitle{Traditional programming approach}
-	\begin{center}
-		\smartdiagram[circular diagram]{Analyse, Algorithm, Test, Improve, Repeat}
-	\end{center}
-\end{frame}
-
-
-\subsubsection{Machine learning approach}
-
-\begin{frame}
-	\frametitle{Machine learning approach}
-	\begin{center}
-		\smartdiagram[circular diagram]{Analyse, Machine Learning, Validation, Improve, Repeat}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{In other words...}
+	\frametitle{Machine Learning}
 	\begin{center}
 		Machine Learning \\
-		\onslide<2-> \huge = Data + Data analysis algorithm \\
-		\onslide<3-> \Huge = Adapt to change
+		\onslide<2-> \huge = Improves performance on a specific task.
 	\end{center}
 \end{frame}
 
@@ -168,6 +158,7 @@
 	\end{figure}
 \end{frame}
 
+
 \section{Model}
 
 \begin{frame}
@@ -199,6 +190,20 @@
 	\end{columns}
 \end{frame}
 
+\subsection{The Goal of Machine Learning}
+
+\begin{frame}
+	\frametitle{The Goal of Machine Learning}
+	\begin{center}
+		\Huge Generalise
+	\end{center}
+	\begin{itemize}
+		\item We wants our model to know how does the \textbf{data pattern} looks like
+		\item Our model should not "adhere" to one set of data, but instead knows the pattern of all the data.
+		\item Therefore, we want our model to \textbf{generalise} over any set of data, given the small portion of data that we used to teach the model.
+	\end{itemize}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Beginning with our first model}
 	\begin{itemize}
@@ -213,20 +218,9 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}
-	\Huge{Coding time!}
-\end{frame}
-
 \section{Machine Learning Process}
 
-\begin{frame}
-	\frametitle{Machine Learning Process}
-	\begin{itemize}
-		\item<2-> Train
-		\item<3-> Test
-	\end{itemize}
-	\onslide<4-> (There'll be more of this, trust me.)
-\end{frame}
+\subsection{Evaluating Machine Learning Performance}
 
 \begin{frame}
 	\frametitle{Choosing the parameter for $k$-NN algorithm}
@@ -245,32 +239,70 @@
 \end{frame}
 
 \begin{frame}
-	\Huge{Coding time!}
+	\frametitle{Training Error}
+	\begin{figure}
+		\begin{tikzpicture}
+			\draw [black] (0, 0) rectangle (10, 1) node[pos=.5] {Training data};
+			\draw [->, red] (2.5, 0) -- (2.5, -1) node[pos=.5] {Train};
+			\draw [black, thick] (0, -2) rectangle (5, -1) node[pos=.5] {Model};
+			\draw [->, violet] (7.5, 0) -- (7.5, -1.5) -- (5, -1.5) node[pos=0] {Evaluate error};
+		\end{tikzpicture}
+	\end{figure}
+	\begin{columns}[t]
+		\column{0.5\textwidth}
+		\begin{block}{Loss function}
+			$$L(y, \hat{y}) =
+				\begin{cases}
+					0 & y = \hat{y}    \\
+					1 & y \neq \hat{y}
+				\end{cases}
+			$$
+		\end{block}
+		\column{0.5\textwidth}
+		\begin{block}{Error}
+			$$\sigma = \frac{1}{N}\sum_{i=0}^{N}L(y_i, \hat{y}_i)$$
+		\end{block}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What went wrong with our intuition?}
+	\begin{itemize}
+		\item Evaluating error with a data points that our model had already seen is bad.
+		\item Why? Because our model already knows the answer to that data point! It could just simply answer by looking at the "answer key"
+		\item So how should we evaluate our model?
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Training and Testing set}
+	\begin{figure}
+		\begin{tikzpicture}
+			\draw [black] (0, 0) rectangle (7, 1) node[pos=.5] {Training data};
+			\draw [blue] (7, 0) rectangle (10, 1) node[pos=.5] {Testing data};
+			\draw [->, red] (2.5, 0) -- (2.5, -1) node[pos=.5] {Train};
+			\draw [black, thick] (0, -2) rectangle (5, -1) node[pos=.5] {Model};
+			\draw [->, violet] (8.5, 0) -- (8.5, -1.5) -- (5, -1.5) node[pos=0] {Evaluate error};
+		\end{tikzpicture}
+	\end{figure}
 	\begin{itemize}
 		\item<2-> We separate our dataset into 2 parts: the \textbf{training set} and \textbf{testing set}
-		      \begin{itemize}
-			      \item<3-> Most of the time, the testing set will be around 10-25\% of the entire dataset
-			      \item<4-> What will happen if we train on the testing set?
-			      \item<5-> What will happen if we test on the training set?
-			            \begin{itemize}
-				            \item<6-> \textbf{Cheating!} Like letting the model \textit{remembers} the answer instead of \textbf{generalising} the data pattern.
-			            \end{itemize}
-			      \item<7-> In other words, \textbf{don't test and train model on the same set of data.}
-		      \end{itemize}
+			\begin{itemize}
+				\item<3-> Our model sees the correct label of the training set, but not the testing set.
+				\item<4-> We all know the correct label of both the training and testing set.
+				\item<5-> Teach our model with the training set, see how it performs with the testing set.
+			\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Choosing the best $k$}
+	What will happen if...
+
 	\begin{itemize}
-		\item<2-> \textbf{Train} with the training set, to let our model know how will the data looks like.
-		\item<3-> \textbf{Test} with the testing set, to see on how our model performs.
+		\item our $k$ is too small?
+		\item our $k$ is too large?
 	\end{itemize}
-	\onslide<4->\tiny{\textit{Warning! This is a simplified Machine Learning model training process, there are more to concerns!}}
 \end{frame}
 
 \begin{frame}
@@ -489,12 +521,26 @@ elif led_on == (a, b, g, e, d):
 	\begin{itemize}
 		\item Training: Pretty fast, no calculations on training phase
 		\item Testing: \textit{*thinking*}
-		\begin{itemize}
-			\item 60,000 data points to calculate the distant + 10,000 data points to test
-			\item = 600,000,000 calculations to be made\\
-			(this excludes sorting, of which is a $\mathcal{O}(n)$ process)
-			\item = \textbf{(relatively) slow}
-		\end{itemize}
+		      \begin{itemize}
+			      \item 60,000 data points to calculate the distant + 10,000 data points to test
+			      \item = 600,000,000 calculations to be made\\
+			            (this excludes sorting, of which is a $\mathcal{O}(n)$ process)
+			      \item = \textbf{(relatively) slow}
+		      \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{$k$-NN with MNIST}
+	\begin{itemize}
+		\item Training: Pretty fast, no calculations on training phase
+		\item Testing: \textit{*thinking*}
+		      \begin{itemize}
+			      \item 60,000 data points to calculate the distant + 10,000 data points to test
+			      \item = 600,000,000 calculations to be made\\
+			            (this excludes sorting, of which is a $\mathcal{O}(n)$ process)
+			      \item = \textbf{(relatively) slow}
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -505,16 +551,68 @@ elif led_on == (a, b, g, e, d):
 	\begin{columns}
 		\column{0.35\textwidth}
 		\begin{figure}
-			\includegraphics[width=1.0\textwidth]{imgs/ann.png}
+			\includegraphics[width=0.7\linewidth,height=0.7\textheight,keepaspectratio]{imgs/ann.png}
+			\caption{Neural network (Courtesy: Glosser.ca from Wikimedia Commons)}
 		\end{figure}
 		\column{0.65\textwidth}
-			This seems complex, right? We'll get started a little by little...
+		This seems complex, right? We'll get start a little by little...
 	\end{columns}
 \end{frame}
 
 \begin{frame}
+	\frametitle{Neuron}
+	\begin{figure}
+		\includegraphics[width=0.7\textwidth]{imgs/neuron.png}
+		\caption{Neuron (Courtesy: Egm4313.s12 from Wikimedia Commons)}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Perceptron}
-	\includegraphics[width=1.0\textwidth]{imgs/perceptron.pdf}
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{imgs/perceptron.pdf}
+	\end{center}
+	\begin{itemize}
+		\item \textbf{Inputs} consisting of $n$ inputs from $x_1$, $x_2$ ... to $x_n$.
+		\item \textbf{Weights} of each inputs, namely $w_1$, $w_2$, ..., $w_n$
+		\item \textbf{Summation} of all the weighted inputs $\Sigma = w_1x_1 + w_2x_2 + \hdots + w_nx_n$
+		\item \textbf{Activation function} in either the form of $\Sigma > k$ or  $\Sigma < k$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Logic gates with Perceptron}
+	\begin{center}
+		\includegraphics[width=0.7\linewidth,height=0.7\textheight,keepaspectratio]{imgs/gates.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Logic gates with Perceptron}
+	\begin{columns}[t]
+		\column{0.33\textwidth}
+		{\large AND gate}
+
+		\begin{itemize}
+			\item $w_1 = 1$
+			\item $w_2 = 1$
+			\item $\Sigma = 1x_1 + 1x_2$
+			\item $f: \Sigma \geq 2$
+		\end{itemize}
+		\column{0.33\textwidth}
+		{\large OR gate}
+
+		\begin{itemize}
+			\item $w_1 = 1$
+			\item $w_2 = 1$
+			\item $\Sigma = 1x_1 + 1x_2$
+			\item $f: \Sigma \geq 1$
+		\end{itemize}
+		\column{0.33\textwidth}
+		{\large XOR gate}
+
+		Why can't XOR gate be created using a perceptron?
+	\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -526,11 +624,21 @@ elif led_on == (a, b, g, e, d):
 			\caption{Linearly Separable Problem (Courtesy: Elizabeth Goodspeed from Wikimedia Commons)}
 		\end{figure}
 		\column{0.6\textwidth}
-			\begin{itemize}
-				\item Now our problem is that the perceptron is a \textbf{linear classifier}, that means it could only separate datas that is linearly separable.
-				\item Real-world problems are not that easy to separate
-				\item How can we solve this problem?
-			\end{itemize}
+		\begin{itemize}
+			\item Now our problem is that the perceptron is a \textbf{linear classifier}, that means it could only separate datas that is linearly separable.
+			\item Real-world problems are not that easy to separate
+			\item How can we solve this problem?
+		\end{itemize}
 	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Neural Networks}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[width=0.7\linewidth,height=0.7\textheight,keepaspectratio]{imgs/xor_nn.png}
+			\caption{XOR gate with Perceptrons connected together (Courtesy: Parth Udawant)}
+		\end{figure}
+	\end{center}
 \end{frame}
 \end{document}
