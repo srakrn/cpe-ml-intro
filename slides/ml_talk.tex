@@ -674,6 +674,42 @@ elif led_on == (a, b, g, e, d):
 	\end{itemize}
 \end{frame}
 
+\section{Challenges in Machine Learning Problems}
+
+\begin{frame}
+	\frametitle{Challenges in Machine Learning Problems}
+	\begin{center}
+		{\onslide<2-> \Huge Accuracy}
+	\end{center}
+	\begin{itemize}
+		\item<3-> Think 87\% is good?
+		\item<4-> Thailand's postal code consists of 5 digits
+		\item<5-> If we need to reconise all the digits correctly, then the probability that one letter/parcel's postal code will be correctly recognised is $$0.87^{5} = 0.4984$$
+		\item<6-> \textbf{More than half of the letter/parcel's postal code will be wrongly labelled!}
+		\item<7-> Can we do better?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Challenges in Machine Learning Problems}
+	\begin{columns}
+		\column{0.3\textwidth}
+		\begin{figure}
+			\includegraphics[width=0.7\textwidth]{imgs/xkcd_tasks.png}
+			\caption{xkcd - Tasks}
+		\end{figure}
+		\column{0.7\textwidth}
+		\begin{center}
+			{\onslide<2-> \Huge Problem's complexity}
+		\end{center}
+		\begin{itemize}
+			\item<3-> Although looked similar, some problems are much more complex than it looks
+			\item<4-> \textbf{CIFAR-10}, a 32*32 pixel RGB images of 10 classes
+			\item<5-> Straightforward neural networks (like what we've did) yields only ~56\% accuracy.
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
 \section{Your next step into Machine Learning}
 
 \begin{frame}
@@ -681,6 +717,8 @@ elif led_on == (a, b, g, e, d):
 	\begin{itemize}
 		\item Engineering Mathematics I
 		\item Discrete Mathematics and Linear Algebra
+		\item Probability and Statistics
+		\item Statistics for Computer Engineers
 		\item Aritificial Intelligence/Machine Learning
 	\end{itemize}
 \end{frame}
@@ -700,7 +738,8 @@ elif led_on == (a, b, g, e, d):
 		\\~\\
 		\url{https://twitter.com/public_srakrn}\\
 		\url{https://www.facebook.com/srakrn}\\
-		\texttt{sirakorn.l@ku.th}
+		\texttt{sirakorn.l@ku.th}\\
+		{\tiny (2-shots with me after this course are totally welcomed)}
 	\end{center}
 \end{frame}
 \end{document}
