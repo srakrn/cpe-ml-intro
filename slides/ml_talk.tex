@@ -98,7 +98,7 @@
 \begin{frame}
 	\frametitle{Machine Learning}
 	\begin{center}
-		Machine Learning \\
+		Machine \textbf{Learning} \\
 		\onslide<2-> \huge = Improves performance on a specific task.
 	\end{center}
 \end{frame}
@@ -199,12 +199,12 @@
 \begin{frame}
 	\frametitle{The Goal of Machine Learning}
 	\begin{center}
-		\Huge Generalise
+		\onslide<2-> \Huge Generalise
 	\end{center}
 	\begin{itemize}
-		\item We wants our model to know how does the \textbf{data pattern} looks like
-		\item Our model should not "adhere" to one set of data, but instead knows the pattern of all the data.
-		\item Therefore, we want our model to \textbf{generalise} over any set of data, given the small portion of data that we used to teach the model.
+		\item<3-> We wants our model to know how does the \textbf{data pattern} looks like
+		\item<4-> Our model should not "adhere" to one set of data, but instead knows the pattern of all the data.
+		\item<5-> Therefore, we want our model to \textbf{generalise} over any set of data, given the small portion of data that we used to teach the model.
 	\end{itemize}
 \end{frame}
 
@@ -272,9 +272,9 @@
 \begin{frame}
 	\frametitle{What went wrong with our intuition?}
 	\begin{itemize}
-		\item Evaluating error with a data points that our model had already seen is bad.
-		\item Why? Because our model already knows the answer to that data point! It could just simply answer by looking at the "answer key"
-		\item So how should we evaluate our model?
+		\item<2-> Evaluating error with a data points that our model had already seen is bad.
+		\item<3-> Why? Because our model already knows the answer to that data point! It could just simply answer by looking at the "answer key"
+		\item<4-> So how should we evaluate our model?
 	\end{itemize}
 \end{frame}
 
@@ -334,25 +334,26 @@
 
 \begin{frame}
 	\frametitle{Parameter Optimisation}
+	\onslide<2-> It's not only $k$ that we can adjust.
 	\begin{itemize}
-		\item Actually, the key point in $k$-NN algorithm is choosing $k$ points with the least \textbf{distant}.
-		\item What is \textbf{distant}?
+		\item<3-> Actually, the key point in $k$-NN algorithm is choosing $k$ points with the least \textbf{distant}.
+		\item<4-> What is \textbf{distant}?
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Norm for $k$-NN algorithm}
-	\begin{block}{Norm}
+	\begin{block}{Norm}<2->
 		In linear algebra, a \textbf{norm} is a function that assigns a strictly positive length or size to each vector in a vector space - except for the zero vector, which is assigned a length of zero.
 	\end{block}
 
-	Given $\vec{x}$ as an $N$-dimension vector of $\begin{bmatrix}
+	\onslide<3-> Given $\vec{x}$ as an $N$-dimension vector of $\begin{bmatrix}
 			x_1 & x_2 & \hdots & x_n
 		\end{bmatrix}$
 	\begin{itemize}
-		\item $l_1$ Norm: $\left|x\right|_1 = \sum_{i=0}^{N}\left|x_i\right|$ (Manhattan)
-		\item $l_2$ Norm: $\left|x\right|_2 = \sqrt{\sum_{i=0}^{N}x_i^2}$ (Euclidian)
-		\item $l_p$ Norm: $\left|x\right|_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}$ (Minkowski)
+		\item<4-> $l_1$ Norm: $\left|x\right|_1 = \sum_{i=0}^{N}\left|x_i\right|$ (Manhattan)
+		\item<5-> $l_2$ Norm: $\left|x\right|_2 = \sqrt{\sum_{i=0}^{N}x_i^2}$ (Euclidian)
+		\item<6-> $l_p$ Norm: $\left|x\right|_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}$ (Minkowski)
 	\end{itemize}
 \end{frame}
 
@@ -360,14 +361,14 @@
 
 \begin{frame}
 	\frametitle{Algorithms for Machine Learning Classification Problem}
-	$k$-NN is a very simple intuition for machine learning algorithms. However, there exists more algorithm that performs well to other problems.
+	\onslide<2-> $k$-NN is a very simple intuition for machine learning algorithms. However, there exists more algorithm that performs well to other problems.
 
-	Example algorithms:
+	\onslide<3-> Example algorithms:
 	\begin{itemize}
-		\item Na\"{i}ve Bayes
-		\item SVM
-		\item Decision Tree
-		\item Logistic Regression
+		\item<4-> Na\"{i}ve Bayes
+		\item<5-> SVM
+		\item<6-> Decision Tree
+		\item<7-> Logistic Regression
 	\end{itemize}
 \end{frame}
 
@@ -448,7 +449,7 @@
 	\begin{center}
 		\begin{figure}
 			\includegraphics[scale=0.5]{imgs/xkcd_training.png}
-			\caption{xkcd - Compiling}
+			\caption{xkcd - Compiling (shamelessly modified)}
 		\end{figure}
 	\end{center}
 \end{frame}
