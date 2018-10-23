@@ -47,7 +47,7 @@
 	\begin{itemize}
 		\item \href{https://docs.google.com/presentation/d/1oGIyzoMHT3-TTS23NPL-qzh0EAXb6kyK0S_1n5MjmgQ/edit\#slide=id.p}{W. Jitkrittum: Machine Learning Fundamentals I}
 		\item \href{http://krikamol.org/tutorial/slides/vistec-talk-16-March-2018.pdf}{K. Muandet: Machine Learning Fundamentals II}
-		\item \href{}{Google's Machine Learning Crash Course}
+		\item \href{https://developers.google.com/machine-learning/crash-course/}{Google's Machine Learning Crash Course}
 	\end{itemize}
 \end{frame}
 
@@ -58,7 +58,7 @@
 	\begin{itemize}
 		\item Python 3.6
 		\item NumPy, Scipy, Matplotlib, Scikit-learn, MLxtend:\\
-			  Run \texttt{pip install numpy scipy matplotlib sklearn mlxtend}
+			  Run \texttt{pip install numpy scipy matplotlib scikit-learn mlxtend}
 		\item MNIST loader\\
 			  \texttt{pip install git+https://github.com/datapythonista/mnist.git}
 	\end{itemize}
@@ -77,20 +77,25 @@
 
 \begin{frame}
 	\frametitle{What is Machine Learning?}
-	\pause
-	\begin{figure}
-		\includegraphics[scale=0.4]{imgs/recaptcha.png}
-	\end{figure}
+	{
+		\onslide<2->
+		\begin{columns}
+			\column{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.4]{imgs/old_recaptcha.png}
+			\end{figure}
+			\column{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.3]{imgs/recaptcha.png}
+			\end{figure}
+		\end{columns}
+	}
 	\begin{itemize}
-		\pause
-		\item This is Recaptcha.
+		\item<3-> This is Recaptcha.
 		      \begin{itemize}
-			      \pause
-			      \item Recaptcha helps stop millions of spam a day.
-			            \pause
-			      \item In some old days, we have to type Captcha texts to distinguish ourself from bots.
-			            \pause
-			      \item How is it possible that with a single click, an automated system can distinguish bots from humans?
+			      \item<4-> Recaptcha helps stop millions of spam a day.
+			      \item<5-> In some old days, we have to type Captcha texts to distinguish ourself from bots.
+			      \item<6-> How is it possible that with a single click, an automated system can distinguish bots from humans?
 		      \end{itemize}
 	\end{itemize}
 \end{frame}
@@ -122,6 +127,7 @@
 		\column{0.5\textwidth}
 		\begin{figure}
 			\includegraphics[width=1.0\textwidth]{imgs/supervised_learning.png}
+			\caption{Supervised learning (Courtesy: Towards Data Science)}
 		\end{figure}
 		\column{0.5\textwidth}
 		\begin{itemize}
@@ -144,6 +150,7 @@
 		\column{0.5\textwidth}
 		\begin{figure}
 			\includegraphics[width=1.0\textwidth]{imgs/kmeans.png}
+			\caption{$k$-Means (Courtesy: Mubaris NK)}
 		\end{figure}
 		\column{0.5\textwidth}
 		\begin{itemize}
@@ -159,6 +166,7 @@
 	\frametitle{Reinforcement learning}
 	\begin{figure}
 		\includegraphics[scale=.7]{imgs/reinforcement_learning.png}
+		\caption{Reinforcement Learning (Courtesy: Megajuice from Wikimedia Commons)}
 	\end{figure}
 \end{frame}
 
@@ -498,7 +506,9 @@ elif led_on == (a, b, g, e, d):
 	\frametitle{Handwriting}
 	\begin{columns}
 		\column{0.3\textwidth}
-		\includegraphics[width=1.0\textwidth]{imgs/mnist_5.png}
+		\begin{figure}
+			\includegraphics[width=1.0\textwidth]{imgs/mnist_5.png}
+		\end{figure}
 		\column{0.7\textwidth}
 		\begin{block}{Problem}
 			When the image of the handwriting were given, can we determine the number?
@@ -511,7 +521,10 @@ elif led_on == (a, b, g, e, d):
 	\frametitle{MNIST Dataset}
 	\begin{columns}
 		\column{0.5\textwidth}
-		\includegraphics[width=1.0\textwidth]{imgs/mnist.jpeg}
+		\begin{figure}
+			\includegraphics[width=1.0\textwidth]{imgs/mnist.jpeg}
+			\caption{MNIST Dataset (Courtesy: LeCun, Towards Data Science)}
+		\end{figure}
 		\column{0.5\textwidth}
 		\begin{itemize}
 			\item<2-> 28*28 pixel images of handwritten numbers (0-9)
