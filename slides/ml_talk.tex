@@ -1,8 +1,5 @@
 % !TEX program = xelatex
 
-% arara: xelatex
-
-
 \documentclass[aspectratio=169]{beamer}
 
 \usepackage{xltxtra} 
@@ -17,8 +14,10 @@
 \usepackage{amsmath}
 \usepackage{smartdiagram}
 \usepackage{graphicx}
-\usepackage{tikz}
 \usepackage{multicol}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes}
 
 \lstdefinestyle{codeblock}{
     breakatwhitespace=false,         
@@ -611,7 +610,7 @@ elif led_on == (a, b, g, e, d):
 		\item<2-> \textbf{Inputs} consisting of $n$ inputs from $x_1$, $x_2$ ... to $x_n$.
 		\item<3-> \textbf{Weights} of each inputs, namely $w_1$, $w_2$, ..., $w_n$
 		\item<4-> \textbf{Summation} of all the weighted inputs $\Sigma = w_1x_1 + w_2x_2 + \hdots + w_nx_n$
-		\item<5-> \textbf{Activation function} in either the form of $\Sigma > k$ or  $\Sigma < k (nonlinear)$
+		\item<5-> \textbf{Activation function} in either the form of $\Sigma > k$ (\textit{nonlinear})
 	\end{itemize}
 \end{frame}
 
@@ -627,24 +626,28 @@ elif led_on == (a, b, g, e, d):
 	\begin{columns}[t]
 		\column{0.33\textwidth}
 		{\large AND gate}
-
 		\onslide<2->
-		\begin{itemize}
-			\item $w_1 = 1$
-			\item $w_2 = 1$
-			\item $\Sigma = 1x_1 + 1x_2$
-			\item $f: \Sigma \geq 2$
-		\end{itemize}
+		\begin{tikzpicture}
+			\draw [main] (0, 1.5) circle [radius=0.5] node {0/1};
+			\draw [main] (0, 0) circle [radius=0.5] node {0/1};
+			\draw [main] (1.5, 0.75) circle [radius=0.5] node {$\Sigma$};
+			\draw [main] (3, 0.75) circle [radius=0.5] node {$> 1.5$};
+			\draw [->, main] (0.5, 1.5) -- (1, 1) node [pos=.5] {1};
+			\draw [->, main] (0.5, 0) -- (1, 0.5) node [pos=.5] {1};
+			\draw [->, main] (2, 0.75) -- (2.5, 0.75);
+		\end{tikzpicture}
 		\column{0.33\textwidth}
 		{\onslide<1-> \large OR gate}
-
 		\onslide<3->
-		\begin{itemize}
-			\item $w_1 = 1$
-			\item $w_2 = 1$
-			\item $\Sigma = 1x_1 + 1x_2$
-			\item $f: \Sigma \geq 1$
-		\end{itemize}
+		\begin{tikzpicture}
+			\draw [main] (0, 1.5) circle [radius=0.5] node {0/1};
+			\draw [main] (0, 0) circle [radius=0.5] node {0/1};
+			\draw [main] (1.5, 0.75) circle [radius=0.5] node {$\Sigma$};
+			\draw [main] (3, 0.75) circle [radius=0.5] node {$> 0.5$};
+			\draw [->, main] (0.5, 1.5) -- (1, 1) node [pos=.5] {1};
+			\draw [->, main] (0.5, 0) -- (1, 0.5) node [pos=.5] {1};
+			\draw [->, main] (2, 0.75) -- (2.5, 0.75);
+		\end{tikzpicture}
 		\column{0.33\textwidth}
 		{\onslide<1-> \large XOR gate}
 
@@ -670,7 +673,25 @@ elif led_on == (a, b, g, e, d):
 \end{frame}
 
 \begin{frame}
-	\frametitle{Artificial Neural Networks}
+	\frametitle{Linearly Seperable?}
+	\begin{columns}[t]
+		\column{0.33\textwidth}
+		{\large AND gate}
+		\onslide<2->
+		\includegraphics[width=1.0\textwidth]{imgs/and.pdf}
+		\column{0.33\textwidth}
+		{\onslide<1-> \large OR gate}
+		\onslide<3->
+		\includegraphics[width=1.0\textwidth]{imgs/or.pdf}
+		\column{0.33\textwidth}
+		{\onslide<1-> \large XOR gate}
+		\onslide<4->
+		\includegraphics[width=1.0\textwidth]{imgs/xor.pdf}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Solution for XOR gate}
 	\begin{center}
 		\begin{figure}
 			\includegraphics[width=0.7\linewidth,height=0.7\textheight,keepaspectratio]{imgs/xor_nn.png}
