@@ -33,5 +33,5 @@ The notebooks for activities require:
 
 ### Checking for the dependencies
 
-- Run `utilities/reqs_check.py` in order to check if everything is installed. You should not see any "X" signs.
+- Run `python utilities/reqs_check.py` in order to check if everything is installed. You should not see any "X" signs.
 - Run `jupyter notebook` in your terminal to see if Jupyter could be run.
