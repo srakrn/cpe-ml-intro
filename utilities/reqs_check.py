@@ -40,15 +40,6 @@ try:
 except:
     print("Importing mlxtend failed!")
 try:
-    import mnist
-    print("Importing mnist successful")
-    mnist.test_labels()
-    print("Loading of dataset completed")
-except ImportError:
-    print("Importing mnist failed!")
-except AttributeError:
-    print("Can't call mnist loading function, prehaps you've installed the wrong mnist?")
-try:
     import jupyter
     print("Importing jupyter successful")
 except:

@@ -5,4 +5,3 @@ matplotlib
 scikit-learn
 mlxtend
 jupyter
-git+https://github.com/datapythonista/mnist.git
