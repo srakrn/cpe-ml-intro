@@ -183,7 +183,7 @@
 		\item<2-> A result of the combination between...
 		      \begin{itemize}
 			      \item<3-> a \textbf{method} to recognise the data, and
-			      \item<4-> \textbf{sample datas} for such the method
+			      \item<4-> \textbf{sample data} for such the method
 		      \end{itemize}
 	\end{itemize}
 	\begin{columns}
@@ -366,7 +366,7 @@
 		\item<4-> $l_1$ Norm: $\left|x\right|_1 = \sum_{i=0}^{N}\left|x_i\right|$ (Manhattan)
 		\item<5-> $l_2$ Norm: $\left|x\right|_2 = \sqrt{\sum_{i=0}^{N}x_i^2}$ (Euclidian)
 		\item<6-> $l_p$ Norm: $\left|x\right|_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}$ (Minkowski)
-		\item<6-> $l_\infty$ Norm: $\left|x\right|_\infty = \texttt{max}(x_1, x_2, ..., x_n)$ (Maximum norm)
+		\item<7-> $l_\infty$ Norm: $\left|x\right|_\infty = \texttt{max}(x_1, x_2, ..., x_n)$ (Maximum norm)
 	\end{itemize}
 \end{frame}
 
@@ -412,10 +412,10 @@
 		\column{0.6\textwidth}
 		Can we \textit{guess} the gender from hair's length?
 		\begin{itemize}
-			\item<4-> $P(\textrm{Male}|\textrm{Long hair}) = \frac{1}{3}$
-			\item<5-> $P(\textrm{Female}|\textrm{Long hair}) = \frac{2}{3}$
+			\item<3-> $P(\textrm{Male}|\textrm{Long hair}) = \frac{1}{3}$
+			\item<4-> $P(\textrm{Female}|\textrm{Long hair}) = \frac{2}{3}$
 		\end{itemize}
-		\onslide<6-> Therefore, we guess that the long-haired person is more likely to be a female.
+		\onslide<5-> Therefore, we guess that the long-haired person is more likely to be a female.
 	\end{columns}
 \end{frame}
 
@@ -482,7 +482,7 @@
 			\item<3-> It consists of a bulb labelled from A-G that could form a number.
 		\end{itemize}
 		\begin{block}{Problem}<4->
-			When the list of the bulb that went on were given, can we determine the number?
+			When the list of the bulb that went on was given, can we determine the number?
 		\end{block}
 	\end{columns}
 \end{frame}
@@ -494,7 +494,7 @@
 		\includegraphics[width=1.0\textwidth]{imgs/7seg.png}
 		\column{0.7\textwidth}
 		\begin{block}{Problem}
-			When the list of the bulb that went on were given, can we determine the number?
+			When the list of the bulb that went on was given, can we determine the number?
 		\end{block}
 		\onslide<2-> Not only yes, but \textit{easily} yes!
 		\begin{lstlisting}<2->
@@ -516,7 +516,7 @@ elif led_on == (a, b, g, e, d):
 		\end{figure}
 		\column{0.7\textwidth}
 		\begin{block}{Problem}
-			When the image of the handwriting were given, can we determine the number?
+			When the image of the handwriting was given, can we determine the number?
 		\end{block}
 		\onslide<2-> With an \textbf{explicit algorithm}? Obviously no! There are too many ways of drawing the number!
 	\end{columns}
@@ -550,7 +550,7 @@ elif led_on == (a, b, g, e, d):
 			\begin{itemize}
 				\item<4-> 60,000 data points to calculate the distant + 10,000 data points to test
 				\item<5-> = 600,000,000 calculations to be made\\
-					(this excludes sorting, of which is a $\mathcal{O}(n)$ process)
+					(this excludes sorting, of which is a $\mathcal{O}(n \log n)$ process)
 				\item<6-> = \textbf{(relatively) slow}
 			\end{itemize}
 		\item<7-> Good results with $k$-NN were achieved.\\
@@ -769,7 +769,7 @@ elif led_on == (a, b, g, e, d):
 		\item<3-> Dimension reduction
 		\item<4-> Dealing with outliers
 		\item<5-> Ensemble learning
-		\item<6-> Normailsation
+		\item<6-> Normalisation 
 		\item<7-> Etc...
 	\end{itemize}
 \end{frame}
@@ -781,7 +781,8 @@ elif led_on == (a, b, g, e, d):
 		\item Discrete Mathematics and Linear Algebra
 		\item Probability and Statistics
 		\item Statistics for Computer Engineers
-		\item Aritificial Intelligence/Machine Learning
+		\item Aritificial Intelligence
+		\item Machine Learning
 	\end{itemize}
 \end{frame}
 
